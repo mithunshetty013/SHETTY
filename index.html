@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Mithun Shetty - Software Engineer & System Architect specializing in modern full-stack web applications, system design, and clean code.">
+  <title>Mithun Shetty | Software Engineer &amp; System Architect</title>
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================================= -->
+  <!-- HEADER & NAVIGATION                                      -->
+  <!-- ========================================================= -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <a href="#hero" class="brand-logo" aria-label="Home">
+        <span class="logo-bracket">&lt;</span><span class="logo-text">Dev</span><span class="logo-accent">.Portfolio</span><span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+          <li class="nav-item"><a href="#timeline" class="nav-link">Timeline</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- =================================================== -->
+        <!-- PLACEHOLDER: NIGHT / DARK MODE TOGGLE               -->
+        <!-- =================================================== -->
+        <!-- 
+          Night Mode Toggle Button:
+          - Toggles light / dark color scheme
+          - Accessible with aria-pressed and aria-label
+          - Includes SVGs for Sun and Moon icons
+        -->
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark/night mode" aria-pressed="true" title="Toggle night mode">
+          <svg class="theme-icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <span class="sr-only">Toggle Night Mode</span>
+        </button>
+        <!-- END PLACEHOLDER: NIGHT MODE TOGGLE -->
+
+        <!-- Mobile Navigation Toggle -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- MAIN CONTENT AREA                                        -->
+  <!-- ========================================================= -->
+  <main id="main-content">
+
+    <!-- ======================================================= -->
+    <!-- ======================================================= -->
+    <!-- SECTION: HERO (MODERN ART STYLE DESIGN)                 -->
+    <!-- ======================================================= -->
+    <section id="hero" class="section hero-section modern-art-hero" aria-labelledby="hero-heading">
+      <!-- Ambient Modern Art Canvas Accents & Geometric Glow Elements -->
+      <div class="modern-art-backdrop-glow" aria-hidden="true"></div>
+      <div class="modern-art-geometric-nodes" aria-hidden="true">
+        <span class="art-geo-node geo-node-1"></span>
+        <span class="art-geo-node geo-node-2"></span>
+        <span class="art-geo-node geo-node-3"></span>
+      </div>
+
+      <div class="container hero-container modern-art-container">
+        <!-- Hero Content / Modern Art Editorial Canvas -->
+        <div class="hero-content modern-art-canvas">
+          
+          <!-- Modern Art Live Status Badge -->
+          <div class="modern-art-badge">
+            <span class="art-indicator-ring">
+              <span class="art-indicator-core"></span>
+            </span>
+            <span class="art-badge-label">SYSTEM ARCHITECT &bull; READY FOR NEW CHALLENGES</span>
+          </div>
+
+          <!-- Main Welcoming Title -->
+          <h1 id="hero-heading" class="hero-title modern-art-title">
+            <span class="hero-salutation">Welcome, I'm</span>
+            <span class="hero-name-gradient">Mithun Shetty</span>
+            <span class="hero-role-headline">Software Engineer &amp; System Architect</span>
+          </h1>
+
+          <!-- Brief Welcoming Tagline -->
+          <p class="hero-description modern-art-tagline">
+            Architecting high-concurrency distributed systems, robust cloud infrastructure, and immersive full-stack digital experiences where rigorous engineering meets the elegance of modern digital art.
+          </p>
+
+          <!-- Modern Art Key Metrics Strip -->
+          <div class="modern-art-stats-strip" aria-label="Key engineering achievements">
+            <div class="art-stat-box">
+              <span class="art-stat-num">5<span class="art-stat-plus">+</span></span>
+              <span class="art-stat-text">Years of Experience</span>
+            </div>
+            <div class="art-stat-divider" aria-hidden="true"></div>
+            <div class="art-stat-box">
+              <span class="art-stat-num">30<span class="art-stat-plus">+</span></span>
+              <span class="art-stat-text">Production Projects</span>
+            </div>
+            <div class="art-stat-divider" aria-hidden="true"></div>
+            <div class="art-stat-box">
+              <span class="art-stat-num">99.9<span class="art-stat-plus">%</span></span>
+              <span class="art-stat-text">System Uptime</span>
+            </div>
+          </div>
+
+          <!-- Interactive Modern Art Action Buttons & Night Mode Toggle -->
+          <div class="hero-actions modern-art-actions">
+            <a href="#projects" class="art-btn art-btn-primary" id="hero-projects-btn">
+              <span>View Projects</span>
+              <svg class="art-btn-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            
+            <a href="#contact" class="art-btn art-btn-secondary" id="hero-contact-btn">
+              <span>Get in Touch</span>
+            </a>
+
+            <!-- =================================================== -->
+            <!-- HERO NIGHT MODE TOGGLE (MEDIA QUERY SYNCED)         -->
+            <!-- =================================================== -->
+            <button type="button" class="art-btn art-btn-toggle" id="hero-theme-toggle" aria-label="Toggle Night Mode" title="Toggle night / day mode">
+              <span class="art-toggle-icon-wrap" aria-hidden="true">
+                <!-- Sun Icon (Active in Dark Mode / Switches to Light) -->
+                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <!-- Moon Icon (Active in Light Mode / Switches to Dark) -->
+                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              </span>
+              <span class="art-toggle-label">
+                <span class="art-toggle-caption">Theme:</span>
+                <span class="art-toggle-status theme-text-status pixel-toggle-text">NIGHT MODE</span>
+              </span>
+            </button>
+            <!-- END HERO NIGHT MODE TOGGLE -->
+          </div>
+
+          <!-- Modern Art Equipped Technology Matrix -->
+          <div class="modern-art-tech-matrix">
+            <span class="tech-matrix-title">CORE TECHNOLOGIES:</span>
+            <div class="tech-tags modern-art-tags">
+              <span class="art-tag"><span class="tag-accent-dot"></span> TypeScript</span>
+              <span class="art-tag"><span class="tag-accent-dot"></span> React / Next.js</span>
+              <span class="art-tag"><span class="tag-accent-dot"></span> Node.js</span>
+              <span class="art-tag"><span class="tag-accent-dot"></span> Python / FastAPI</span>
+              <span class="art-tag"><span class="tag-accent-dot"></span> PostgreSQL</span>
+              <span class="art-tag"><span class="tag-accent-dot"></span> Docker / AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual: Modern Art Gallery Portrait & Asymmetric Framing -->
+        <div class="hero-visual modern-art-visual">
+          <div class="art-gallery-frame">
+            <!-- Modern Art Geometric Floating Canvases -->
+            <div class="art-geometric-backing art-backing-cyan" aria-hidden="true"></div>
+            <div class="art-geometric-backing art-backing-violet" aria-hidden="true"></div>
+
+            <!-- Main Portrait Card with Frosted Glass Border -->
+            <div class="art-portrait-card">
+              <div class="art-image-inner">
+                <img src="mithun profilre.jpeg" alt="Mithun Shetty - Software Engineer" class="modern-art-image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534972195531-a756b1126f24?auto=format&fit=crop&w=600&q=80';">
+                <div class="art-image-gradient-overlay"></div>
+              </div>
+
+              <!-- Modern Art Floating Chips -->
+              <div class="art-floating-pill pill-top">
+                <span class="pill-glow-orb"></span>
+                <div class="pill-text-group">
+                  <span class="pill-title">SYSTEM ARCHITECT</span>
+                  <span class="pill-subtitle">Cloud &amp; Microservices</span>
+                </div>
+              </div>
+
+              <div class="art-floating-pill pill-bottom">
+                <span class="pill-icon">✦</span>
+                <div class="pill-text-group">
+                  <span class="pill-title">HIGH-IMPACT CODE</span>
+                  <span class="pill-subtitle">Scalable Engineering</span>
+                </div>
+              </div>
+
+              <!-- Card Status Bar -->
+              <div class="art-card-footer">
+                <span class="art-pulse-dot"></span>
+                <span class="art-footer-status">ONLINE &bull; SAN FRANCISCO / BANGALORE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END SECTION: HERO -->
+
+    <!-- ======================================================= -->
+    <!-- SECTION: ABOUT (PLACEHOLDER)                            -->
+    <!-- ======================================================= -->
+    <!-- 
+      About Section:
+      - Biography / background story
+      - Core philosophies & engineering focus
+      - Key milestones or quick stats
+    -->
+        <!-- ======================================================= -->
+    <!-- SECTION: ABOUT ME                                       -->
+    <!-- ======================================================= -->
+    <section id="about" class="section about-section" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Get To Know Me</span>
+          <h2 id="about-heading" class="section-title">About Me</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="about-grid about-modern-grid">
+          
+          <!-- Modern Art Avatar & Identity Showcase -->
+          <div class="about-avatar-container">
+            <div class="about-avatar-card">
+              <div class="about-avatar-glow"></div>
+              <div class="about-avatar-frame">
+                <img src="modern-avatar.jpg" alt="Mithun C N - Modern Art Avatar" class="about-avatar-img" onerror="this.onerror=null; this.src='mithun profilre.jpeg';">
+              </div>
+              <div class="about-avatar-meta">
+                <h3 class="about-avatar-name">Mithun C N</h3>
+                <span class="about-avatar-role">Aspiring Software Engineer</span>
+                <div class="about-avatar-status">
+                  <span class="status-pulse-dot"></span>
+                  <span>AIT Chikkamagaluru</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clean Minimalistic Bio & Highlights -->
+          <div class="about-bio-container">
+            <div class="about-bio">
+              <p class="about-lead">
+                Hello! I am <strong class="text-gradient">Mithun C N</strong>, a passionate software engineer and computer science student at <strong>AIT (Adichunchanagiri Institute of Technology)</strong>.
+              </p>
+              <p>
+                Rooted in the serene coffee land of <strong>Chikkamagaluru</strong>, Karnataka (born <strong>13-08-2007</strong>), I combine analytical discipline with modern, clean design aesthetics. I am obsessed with building scalable software systems, writing clean maintainable code, and crafting intuitive user experiences.
+              </p>
+              <p>
+                From dissecting algorithmic problem-solving to architecting modern web platforms, I strive to build high-performance software that solves real-world human needs with elegant simplicity.
+              </p>
+            </div>
+
+            <!-- Essential Info Cards -->
+            <div class="about-highlights about-info-grid">
+              <div class="highlight-item">
+                <span class="highlight-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </span>
+                <div>
+                  <strong>Full Name</strong>
+                  <p>Mithun C N</p>
+                </div>
+              </div>
+
+              <div class="highlight-item">
+                <span class="highlight-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="18" y2="10"></line></svg>
+                </span>
+                <div>
+                  <strong>Date of Birth</strong>
+                  <p>13-08-2007 (August 13, 2007)</p>
+                </div>
+              </div>
+
+              <div class="highlight-item">
+                <span class="highlight-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                </span>
+                <div>
+                  <strong>College</strong>
+                  <p>AIT (Adichunchanagiri Institute of Tech)</p>
+                </div>
+              </div>
+
+              <div class="highlight-item">
+                <span class="highlight-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </span>
+                <div>
+                  <strong>Place / Origin</strong>
+                  <p>Chikkamagaluru, Karnataka</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Career Highlights & Personal Interests Sub-Cards -->
+            <div class="about-extras-grid">
+              <div class="about-extra-card">
+                <div class="extra-card-header">
+                  <span class="extra-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                  </span>
+                  <h4>Career Highlights</h4>
+                </div>
+                <ul class="extra-list">
+                  <li>Engineering student at AIT mastering computer science &amp; software engineering fundamentals.</li>
+                  <li>Developing full-stack web applications with modern modular architectures &amp; reactive UI.</li>
+                  <li>Continuous problem solving, data structure implementation, and clean code craftsmanship.</li>
+                </ul>
+              </div>
+
+              <div class="about-extra-card">
+                <div class="extra-card-header">
+                  <span class="extra-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  </span>
+                  <h4>Personal Interests</h4>
+                </div>
+                <ul class="extra-list">
+                  <li>Western Ghats exploration &amp; trekking scenic peaks (Mullayanagiri trails) around Chikkamagaluru.</li>
+                  <li>Chikkamagaluru coffee culture, artisanal roasts, and peaceful hill country vibes.</li>
+                  <li>Minimalist digital aesthetics, modern avatar design, and cutting-edge developer tooling.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+<!-- END SECTION: ABOUT -->
+
+    <!-- ======================================================= -->
+    <!-- SECTION: SKILLS (PLACEHOLDER)                           -->
+    <!-- ======================================================= -->
+    <!-- 
+      Skills Section:
+      - Categorized technical proficiencies:
+        1. Languages (JS/TS, Python, Go, Java, SQL)
+        2. Frontend (React, Vue, Next.js, HTML5/CSS3)
+        3. Backend & Cloud (Node, Express, Django, AWS, Docker, K8s)
+        4. Databases & Tools (PostgreSQL, Redis, Git, CI/CD)
+    -->
+    <section id="skills" class="section skills-section" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Technical Proficiency</span>
+          <h2 id="skills-heading" class="section-title">Skills &amp; Technologies</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skill Category: Frontend -->
+          <article class="skill-category-card">
+            <div class="category-header">
+              <span class="category-icon">🎨</span>
+              <h3 class="category-title">Frontend Development</h3>
+            </div>
+            <ul class="skills-list">
+              <li class="skill-pill">HTML5 &amp; Semantic Web</li>
+              <li class="skill-pill">CSS3 / SASS / Flexbox / Grid</li>
+              <li class="skill-pill">JavaScript (ES6+)</li>
+              <li class="skill-pill">TypeScript</li>
+              <li class="skill-pill">React &amp; Next.js</li>
+              <li class="skill-pill">Tailwind &amp; CSS Modules</li>
+              <li class="skill-pill">State Management (Redux/Zustand)</li>
+            </ul>
+          </article>
+
+          <!-- Skill Category: Backend & APIs -->
+          <article class="skill-category-card">
+            <div class="category-header">
+              <span class="category-icon">⚙️</span>
+              <h3 class="category-title">Backend &amp; APIs</h3>
+            </div>
+            <ul class="skills-list">
+              <li class="skill-pill">Node.js &amp; Express</li>
+              <li class="skill-pill">Python &amp; FastAPI / Django</li>
+              <li class="skill-pill">Go (Golang)</li>
+              <li class="skill-pill">RESTful APIs &amp; GraphQL</li>
+              <li class="skill-pill">Microservices Architecture</li>
+              <li class="skill-pill">WebSockets &amp; Realtime Pub/Sub</li>
+              <li class="skill-pill">Authentication (OAuth, JWT)</li>
+            </ul>
+          </article>
+
+          <!-- Skill Category: Databases & Storage -->
+          <article class="skill-category-card">
+            <div class="category-header">
+              <span class="category-icon">🗄️</span>
+              <h3 class="category-title">Databases &amp; Caching</h3>
+            </div>
+            <ul class="skills-list">
+              <li class="skill-pill">PostgreSQL</li>
+              <li class="skill-pill">MySQL</li>
+              <li class="skill-pill">MongoDB</li>
+              <li class="skill-pill">Redis (Caching / Queues)</li>
+              <li class="skill-pill">Prisma &amp; TypeORM</li>
+              <li class="skill-pill">Database Indexing &amp; Query Tuning</li>
+            </ul>
+          </article>
+
+          <!-- Skill Category: DevOps & Tools -->
+          <article class="skill-category-card">
+            <div class="category-header">
+              <span class="category-icon">☁️</span>
+              <h3 class="category-title">Cloud &amp; DevOps</h3>
+            </div>
+            <ul class="skills-list">
+              <li class="skill-pill">AWS (S3, EC2, Lambda)</li>
+              <li class="skill-pill">Docker &amp; Containers</li>
+              <li class="skill-pill">Kubernetes Basics</li>
+              <li class="skill-pill">CI/CD (GitHub Actions)</li>
+              <li class="skill-pill">Git &amp; GitHub Version Control</li>
+              <li class="skill-pill">Linux &amp; Shell Scripting</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- END SECTION: SKILLS -->
+
+    <!-- ======================================================= -->
+    <!-- SECTION: TIMELINE / EXPERIENCE (PLACEHOLDER)            -->
+    <!-- ======================================================= -->
+    <!-- 
+      Timeline Section:
+      - Chronological list of work experience and/or education
+      - Company/Institution, Role/Degree, Dates, Key achievements
+    -->
+    <section id="timeline" class="section timeline-section" aria-labelledby="timeline-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Career Journey</span>
+          <h2 id="timeline-heading" class="section-title">Experience &amp; Timeline</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="timeline-wrapper">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2023 - Present</span>
+              <h3 class="timeline-role">Senior Full-Stack Engineer</h3>
+              <h4 class="timeline-company">TechNova Systems • San Francisco, CA</h4>
+              <p class="timeline-desc">
+                Architected high-throughput microservices handling over 5M daily requests. Led frontend modernization migration to React and TypeScript, reducing client load time by 42%.
+              </p>
+              <div class="timeline-tags">
+                <span class="mini-tag">TypeScript</span>
+                <span class="mini-tag">Next.js</span>
+                <span class="mini-tag">Node.js</span>
+                <span class="mini-tag">AWS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2021 - 2023</span>
+              <h3 class="timeline-role">Software Engineer</h3>
+              <h4 class="timeline-company">CloudPeak Innovations • New York, NY</h4>
+              <p class="timeline-desc">
+                Designed and maintained RESTful APIs in Python &amp; FastAPI. Implemented automated CI/CD pipelines with GitHub Actions and Docker, accelerating release cadence from bi-weekly to daily.
+              </p>
+              <div class="timeline-tags">
+                <span class="mini-tag">Python</span>
+                <span class="mini-tag">FastAPI</span>
+                <span class="mini-tag">PostgreSQL</span>
+                <span class="mini-tag">Docker</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2019 - 2021</span>
+              <h3 class="timeline-role">Junior Web Developer</h3>
+              <h4 class="timeline-company">PixelCraft Digital • Austin, TX</h4>
+              <p class="timeline-desc">
+                Built responsive web interfaces with vanilla JavaScript, modern CSS, and REST API integrations. Collaborated closely with UX designers to translate Figma mockups into accessible code.
+              </p>
+              <div class="timeline-tags">
+                <span class="mini-tag">JavaScript</span>
+                <span class="mini-tag">CSS3</span>
+                <span class="mini-tag">REST APIs</span>
+                <span class="mini-tag">Git</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 4 (Education) -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2015 - 2019</span>
+              <h3 class="timeline-role">B.S. in Computer Science</h3>
+              <h4 class="timeline-company">State University of Technology</h4>
+              <p class="timeline-desc">
+                Graduated with Honors. Coursework included Data Structures &amp; Algorithms, Database Systems, Computer Networks, and Software Engineering Principles.
+              </p>
+              <div class="timeline-tags">
+                <span class="mini-tag">Algorithms</span>
+                <span class="mini-tag">Databases</span>
+                <span class="mini-tag">OS &amp; Networks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END SECTION: TIMELINE -->
+
+    <!-- ======================================================= -->
+    <!-- SECTION: PROJECTS (PLACEHOLDER)                         -->
+    <!-- ======================================================= -->
+    <!-- 
+      Projects Section:
+      - Showcase of featured software engineering projects
+      - Project card structure: Image/preview, Title, Description, Tech stack pills, Live demo & GitHub links
+    -->
+    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Portfolio Showcase</span>
+          <h2 id="projects-heading" class="section-title">Featured Projects</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-image-box">
+              <div class="project-preview-mockup">
+                <span class="mockup-tag">Full-Stack SaaS</span>
+                <h4 class="mockup-title">TaskFlow Pro</h4>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">TaskFlow - Collaborative Project Board</h3>
+              <p class="project-description">
+                A real-time Kanban and workflow management platform featuring WebSockets, role-based access control, and granular activity logging.
+              </p>
+              <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Socket.io</span>
+                <span class="tag">PostgreSQL</span>
+              </div>
+              <div class="project-links">
+                <a href="#projects" class="project-link" aria-label="View Live Demo for TaskFlow">
+                  <span>Live Demo</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <a href="#projects" class="project-link" aria-label="View Source Code for TaskFlow">
+                  <span>Source Code</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-image-box">
+              <div class="project-preview-mockup">
+                <span class="mockup-tag">Developer Tooling</span>
+                <h4 class="mockup-title">LogPulse CLI</h4>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">LogPulse - Cloud Log Streamer &amp; Analyzer</h3>
+              <p class="project-description">
+                Lightweight CLI tool and monitoring service that streams distributed server logs, parses JSON payloads, and visualizes error frequency in real-time.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Go</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Redis</span>
+                <span class="tag">Prometheus</span>
+              </div>
+              <div class="project-links">
+                <a href="#projects" class="project-link" aria-label="View Live Demo for LogPulse">
+                  <span>Live Demo</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <a href="#projects" class="project-link" aria-label="View Source Code for LogPulse">
+                  <span>Source Code</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-image-box">
+              <div class="project-preview-mockup">
+                <span class="mockup-tag">Fintech / Web3</span>
+                <h4 class="mockup-title">VaultPay Engine</h4>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">VaultPay - Multi-Currency Payment Gateway</h3>
+              <p class="project-description">
+                High-security transaction processor equipped with cryptographic verification, idempotency controls, and webhook dispatching engine.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Stripe API</span>
+              </div>
+              <div class="project-links">
+                <a href="#projects" class="project-link" aria-label="View Live Demo for VaultPay">
+                  <span>Live Demo</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+                <a href="#projects" class="project-link" aria-label="View Source Code for VaultPay">
+                  <span>Source Code</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- END SECTION: PROJECTS -->
+
+    <!-- ======================================================= -->
+    <!-- SECTION: CONTACT (PLACEHOLDER)                          -->
+    <!-- ======================================================= -->
+    <!-- 
+      Contact Section:
+      - Contact form with semantic inputs (Name, Email, Message)
+      - Direct contact links (Email, LinkedIn, GitHub, X/Twitter)
+    -->
+    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Let's Connect</span>
+          <h2 id="contact-heading" class="section-title">Get In Touch</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3 class="contact-info-title">Have a project or opportunity in mind?</h3>
+            <p class="contact-info-text">
+              I am always eager to discuss software engineering challenges, exciting contract or full-time opportunities, and collaborative initiatives.
+            </p>
+            <div class="contact-methods">
+              <a href="mailto:alex.dev@example.com" class="contact-item">
+                <span class="contact-icon">✉️</span>
+                <div>
+                  <strong>Email</strong>
+                  <p>alex.dev@example.com</p>
+                </div>
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <span class="contact-icon">💻</span>
+                <div>
+                  <strong>GitHub</strong>
+                  <p>github.com/alexdev</p>
+                </div>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <span class="contact-icon">🔗</span>
+                <div>
+                  <strong>LinkedIn</strong>
+                  <p>linkedin.com/in/alexdev</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form" action="#" method="POST" id="contact-form">
+            <div class="form-group">
+              <label for="contact-name">Your Name</label>
+              <input type="text" id="contact-name" name="name" placeholder="Jane Doe" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" name="email" placeholder="jane@example.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject" placeholder="Project Inquiry / Job Opportunity" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="5" placeholder="Tell me about your project or role..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- END SECTION: CONTACT -->
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- FOOTER                                                   -->
+  <!-- ========================================================= -->
+  <!-- 
+    Footer:
+    - Copyright notice, back-to-top link, social media links
+  -->
+  <footer class="site-footer" id="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#hero" class="brand-logo">
+          <span class="logo-bracket">&lt;</span><span class="logo-text">Dev</span><span class="logo-accent">.Portfolio</span><span class="logo-bracket">/&gt;</span>
+        </a>
+        <p class="footer-tagline">Building clean code, scalable architecture, and thoughtful web experiences.</p>
+      </div>
+
+      <div class="footer-links">
+        <ul class="footer-nav">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#timeline">Timeline</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">&copy; <span id="current-year">2026</span> Mithun Shetty. All rights reserved.</p>
+        <a href="#header" class="back-to-top" aria-label="Back to top">
+          Back to Top ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+  <!-- JavaScript for Night Mode Toggle & Interactivity -->
+  <script src="script.js"></script>
+</body>
+</html>

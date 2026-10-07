@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of a Software Engineer - System design, full-stack development, and software architecture.">
+  <meta name="author" content="Software Engineer">
+  <title>Software Engineer Portfolio | Structure Template</title>
+
+  <!-- Google Fonts for Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Optional External Stylesheet -->
+  <!-- <link rel="stylesheet" href="style.css"> -->
+
+  <!-- Embedded Premium Styling & Theme Variables -->
+  <style>
+    /* ==========================================================================
+       CSS Custom Properties / Theme Variables (Supports Dark & Light Mode)
+       ========================================================================== */
+    :root {
+      /* Dark Theme (Default) */
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.75);
+      --bg-card-hover: rgba(31, 41, 55, 0.85);
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(99, 102, 241, 0.5);
+      --accent-primary: #6366f1;
+      --accent-secondary: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      --accent-glow: rgba(99, 102, 241, 0.35);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --card-shadow-hover: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+      --header-bg: rgba(11, 15, 25, 0.85);
+      --code-bg: rgba(99, 102, 241, 0.1);
+      --badge-bg: rgba(99, 102, 241, 0.15);
+      --badge-color: #818cf8;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-pill: 9999px;
+      --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+      /* Sidebar-specific tokens */
+      --sidebar-width: 240px;
+      --sidebar-collapsed-width: 68px;
+      --sidebar-bg: rgba(7, 10, 18, 0.97);
+      --sidebar-border: rgba(99, 102, 241, 0.25);
+      --sidebar-link-hover: rgba(99, 102, 241, 0.12);
+      --sidebar-link-active: rgba(99, 102, 241, 0.2);
+      --sidebar-icon-glow: rgba(99, 102, 241, 0.55);
+      --pixel-border-color: #6366f1;
+    }
+
+    /* Light Theme Overrides */
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(15, 23, 42, 0.08);
+      --border-hover: rgba(99, 102, 241, 0.4);
+      --accent-glow: rgba(99, 102, 241, 0.2);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+      --card-shadow-hover: 0 20px 40px -15px rgba(99, 102, 241, 0.15);
+      --header-bg: rgba(248, 250, 252, 0.85);
+      --code-bg: rgba(99, 102, 241, 0.08);
+      --badge-bg: rgba(99, 102, 241, 0.1);
+      --badge-color: #4f46e5;
+      --sidebar-bg: rgba(248, 250, 252, 0.98);
+      --sidebar-border: rgba(79, 70, 229, 0.2);
+      --sidebar-link-hover: rgba(79, 70, 229, 0.08);
+      --sidebar-link-active: rgba(79, 70, 229, 0.14);
+      --sidebar-icon-glow: rgba(79, 70, 229, 0.4);
+      --pixel-border-color: #4f46e5;
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      overflow-x: hidden;
+      /* Push content right to make room for sidebar */
+      padding-left: var(--sidebar-collapsed-width);
+    }
+
+    body.sidebar-expanded {
+      padding-left: var(--sidebar-width);
+    }
+
+    /* Skip link for screen readers */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--accent-primary);
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      z-index: 9999;
+      font-weight: 600;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* Layout Containers */
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ==============================================================
+       VERTICAL SIDEBAR NAVIGATION — PIXEL ART AESTHETIC
+       ============================================================== */
+
+    /* === Core Sidebar Shell === */
+    .pixel-sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: var(--sidebar-collapsed-width);
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--sidebar-border);
+      z-index: 1200;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 4px 0 24px -4px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    /* Pixel-art outer glow + retro top accent bar */
+    .pixel-sidebar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    }
+
+    /* Pixelated dashed right border overlay */
+    .pixel-sidebar::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      right: 0;
+      bottom: 0;
+      width: 2px;
+      background: repeating-linear-gradient(
+        to bottom,
+        var(--pixel-border-color) 0px,
+        var(--pixel-border-color) 4px,
+        transparent 4px,
+        transparent 8px
+      );
+      opacity: 0.6;
+    }
+
+    /* Expanded state */
+    .pixel-sidebar.expanded {
+      width: var(--sidebar-width);
+    }
+
+    /* === Sidebar Header (Logo + Toggle) === */
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 68px;
+      min-height: 68px;
+      padding: 0 0.85rem;
+      border-bottom: 1px solid var(--sidebar-border);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      white-space: nowrap;
+      opacity: 0;
+      width: 0;
+      overflow: hidden;
+      transition: opacity 0.2s ease 0s, width 0.3s ease;
+      letter-spacing: 0.06em;
+    }
+
+    .pixel-sidebar.expanded .sidebar-logo {
+      opacity: 1;
+      width: auto;
+      transition: opacity 0.2s ease 0.15s, width 0.3s ease;
+    }
+
+    /* Toggle button (hamburger / arrow) */
+    .sidebar-toggle-btn {
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      background: var(--bg-secondary);
+      border: 2px solid var(--pixel-border-color);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--accent-primary);
+      z-index: 10;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 2px 2px 0 0 var(--accent-primary);
+      flex-shrink: 0;
+    }
+
+    .sidebar-toggle-btn:hover {
+      background: var(--sidebar-link-hover);
+      box-shadow: 3px 3px 0 0 var(--accent-primary);
+    }
+
+    .sidebar-toggle-btn:focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 3px;
+    }
+
+    .toggle-icon {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .pixel-sidebar.expanded .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    /* === Navigation Links Area === */
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 1rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-primary) transparent;
+    }
+
+    .sidebar-nav::-webkit-scrollbar {
+      width: 3px;
+    }
+    .sidebar-nav::-webkit-scrollbar-thumb {
+      background: var(--accent-primary);
+      border-radius: 2px;
+    }
+
+    .sidebar-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 0 0.5rem;
+    }
+
+    /* === Individual Nav Link === */
+    .sidebar-nav-item {
+      position: relative;
+    }
+
+    .sidebar-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.8rem 0.85rem;
+      border-radius: 6px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+      /* Pixel-art left indicator */
+      border: 1px solid transparent;
+    }
+
+    .sidebar-nav-link:hover {
+      background: var(--sidebar-link-hover);
+      color: var(--text-primary);
+      border-color: var(--sidebar-border);
+      box-shadow: inset 3px 0 0 var(--accent-primary);
+    }
+
+    .sidebar-nav-link:focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 2px;
+    }
+
+    .sidebar-nav-link.active {
+      background: var(--sidebar-link-active);
+      color: var(--accent-primary);
+      border-color: var(--sidebar-border);
+      box-shadow: inset 3px 0 0 var(--accent-primary);
+    }
+
+    /* Pixel-art icon container */
+    .nav-icon-wrap {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border-radius: 6px;
+      background: transparent;
+      transition: background 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .sidebar-nav-link:hover .nav-icon-wrap,
+    .sidebar-nav-link.active .nav-icon-wrap {
+      background: var(--sidebar-link-active);
+      box-shadow: 0 0 10px var(--sidebar-icon-glow);
+    }
+
+    .nav-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      transition: color 0.18s ease;
+    }
+
+    .sidebar-nav-link.active .nav-icon {
+      color: var(--accent-primary);
+      filter: drop-shadow(0 0 4px var(--accent-primary));
+    }
+
+    /* Nav label text */
+    .nav-label {
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      width: 0;
+      overflow: hidden;
+      transition: opacity 0.15s ease 0s, width 0.3s ease;
+      pointer-events: none;
+    }
+
+    .pixel-sidebar.expanded .nav-label {
+      opacity: 1;
+      width: auto;
+      transition: opacity 0.2s ease 0.12s, width 0.3s ease;
+      pointer-events: auto;
+    }
+
+    /* Pixel-art badge (optional count) */
+    .nav-badge {
+      margin-left: auto;
+      padding: 0.12rem 0.45rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      font-family: 'Fira Code', monospace;
+      border-radius: 3px;
+      background: var(--accent-primary);
+      color: #ffffff;
+      box-shadow: 1px 1px 0 0 rgba(0,0,0,0.4);
+      flex-shrink: 0;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    .pixel-sidebar.expanded .nav-badge {
+      opacity: 1;
+      transition: opacity 0.2s ease 0.15s;
+    }
+
+    /* Tooltip for collapsed state (accessibility) */
+    .sidebar-nav-link[title]::after {
+      display: none; /* custom tooltip below */
+    }
+
+    .sidebar-tooltip {
+      position: absolute;
+      left: calc(var(--sidebar-collapsed-width) + 10px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 5px;
+      border: 1px solid var(--pixel-border-color);
+      box-shadow: 3px 3px 0 0 rgba(99,102,241,0.35);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 1300;
+      transition: opacity 0.15s ease;
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* Show tooltip only when sidebar is collapsed */
+    .pixel-sidebar:not(.expanded) .sidebar-nav-item:hover .sidebar-tooltip {
+      opacity: 1;
+    }
+
+    /* === Sidebar Divider === */
+    .sidebar-divider {
+      height: 1px;
+      margin: 0.75rem 0.85rem;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--pixel-border-color) 0px,
+        var(--pixel-border-color) 3px,
+        transparent 3px,
+        transparent 6px
+      );
+      opacity: 0.4;
+    }
+
+    /* === Sidebar Footer (social + pixel counter) === */
+    .sidebar-footer {
+      padding: 0.75rem 0.5rem;
+      border-top: 1px solid var(--sidebar-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sidebar-pixel-counter {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-align: center;
+      white-space: nowrap;
+      opacity: 0;
+      width: 0;
+      overflow: hidden;
+      transition: opacity 0.15s ease 0s, width 0.3s ease;
+    }
+
+    .pixel-sidebar.expanded .sidebar-pixel-counter {
+      opacity: 1;
+      width: auto;
+      transition: opacity 0.2s ease 0.15s, width 0.3s ease;
+    }
+
+    .sidebar-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 0;
+      box-shadow: 0 0 8px #10b981;
+      flex-shrink: 0;
+    }
+
+    /* === Mobile Overlay (hamburger trigger) === */
+    .sidebar-mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1199;
+      backdrop-filter: blur(2px);
+    }
+
+    .sidebar-mobile-overlay.visible {
+      display: block;
+    }
+
+    .mobile-nav-btn {
+      display: none;
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1210;
+      width: 52px;
+      height: 52px;
+      background: var(--accent-primary);
+      border: 2px solid #ffffff;
+      border-radius: 6px;
+      box-shadow: 4px 4px 0 0 rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #ffffff;
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+
+    .mobile-nav-btn:hover {
+      box-shadow: 6px 6px 0 0 rgba(0,0,0,0.5);
+      transform: translate(-1px, -1px);
+    }
+
+    .mobile-nav-btn svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* === Responsive Breakpoints === */
+    @media (max-width: 1024px) {
+      :root {
+        --sidebar-width: 220px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-left: 0 !important;
+      }
+
+      body.sidebar-expanded {
+        padding-left: 0 !important;
+      }
+
+      .pixel-sidebar {
+        transform: translateX(-100%);
+        width: var(--sidebar-width) !important;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .pixel-sidebar.mobile-open {
+        transform: translateX(0);
+      }
+
+      /* Force labels visible on mobile (sidebar is full-width when open) */
+      .pixel-sidebar.mobile-open .nav-label {
+        opacity: 1;
+        width: auto;
+      }
+
+      .pixel-sidebar.mobile-open .sidebar-logo {
+        opacity: 1;
+        width: auto;
+      }
+
+      .pixel-sidebar.mobile-open .sidebar-pixel-counter {
+        opacity: 1;
+        width: auto;
+      }
+
+      .pixel-sidebar.mobile-open .nav-badge {
+        opacity: 1;
+      }
+
+      .sidebar-toggle-btn {
+        display: none;
+      }
+
+      .mobile-nav-btn {
+        display: flex;
+      }
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      color: var(--text-primary);
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition-base);
+    }
+
+    code, pre {
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* Section Global Styles */
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-primary);
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-divider {
+      width: 50px;
+      height: 3px;
+      background: var(--accent-gradient);
+      margin: 0.75rem auto 0;
+      border-radius: var(--radius-pill);
+    }
+
+    /* Header & Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--header-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.5rem;
+    }
+
+    .brand-logo {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .logo-bracket {
+      color: var(--accent-primary);
+    }
+
+    .logo-accent {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-list {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 1.75rem;
+    }
+
+    .nav-link {
+      font-size: 0.925rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .nav-link:hover, .nav-link:focus-visible {
+      color: var(--accent-primary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Night Mode Toggle Button Styling */
+    .theme-toggle-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 0.5rem;
+      width: 2.6rem;
+      height: 2.6rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: var(--transition-base);
+    }
+
+    .theme-toggle-btn:hover {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 12px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle-btn .icon-sun,
+    .theme-toggle-btn .icon-moon {
+      width: 1.25rem;
+      height: 1.25rem;
+      transition: transform 0.3s ease;
+    }
+
+    /* Show Sun in Dark Mode, Moon in Light Mode */
+    [data-theme="dark"] .icon-moon { display: none; }
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="light"] .icon-sun { display: none; }
+    [data-theme="light"] .icon-moon { display: block; }
+
+    /* Screen reader helper */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-base);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      border-color: var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-primary);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Card Base */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition-base);
+      backdrop-filter: blur(8px);
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 0 4rem;
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      background: var(--badge-bg);
+      color: var(--badge-color);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    .hero-title {
+      font-size: 3.25rem;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 650px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent-primary);
+      display: block;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skills-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .skill-tag {
+      background: var(--code-bg);
+      color: var(--text-primary);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-family: 'Fira Code', monospace;
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Timeline Section */
+    .timeline-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      border-left: 2px solid var(--border-subtle);
+      padding-left: 2rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: calc(-2rem - 6px);
+      top: 0.25rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+      border: 3px solid var(--bg-primary);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .timeline-date {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    .timeline-role {
+      font-size: 1.25rem;
+      margin: 0.25rem 0;
+    }
+
+    .timeline-company {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-preview {
+      width: 100%;
+      height: 180px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+      border: 1px dashed var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-family: 'Fira Code', monospace;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-title {
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .project-link {
+      color: var(--accent-primary);
+    }
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition-base);
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 0;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .back-to-top {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.25rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-list { display: none; /* Can be expanded with a mobile hamburger */ }
+      .footer-content { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip-to-Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ====================================================================== -->
+  <!-- PIXEL ART VERTICAL SIDEBAR NAVIGATION                                   -->
+  <!-- ====================================================================== -->
+
+  <!-- Mobile overlay (closes sidebar on tap outside) -->
+  <div class="sidebar-mobile-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- Mobile hamburger trigger (visible on small screens) -->
+  <button class="mobile-nav-btn" id="mobile-nav-btn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="pixel-sidebar">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <nav
+    id="pixel-sidebar"
+    class="pixel-sidebar"
+    aria-label="Portfolio Vertical Navigation"
+    role="navigation"
+  >
+    <!-- Sidebar Header: Logo + Expand/Collapse Toggle -->
+    <div class="sidebar-header">
+      <span class="sidebar-logo" aria-hidden="true">&lt;NAV/&gt;</span>
+
+      <!-- Desktop expand / collapse button -->
+      <button
+        id="sidebar-toggle"
+        class="sidebar-toggle-btn"
+        type="button"
+        aria-label="Expand navigation sidebar"
+        aria-expanded="false"
+        aria-controls="pixel-sidebar"
+        title="Expand sidebar"
+      >
+        <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Primary Navigation Links -->
+    <ul class="sidebar-nav-list" id="sidebar-nav" role="list">
+
+      <!-- Home -->
+      <li class="sidebar-nav-item">
+        <a href="#hero" class="sidebar-nav-link active" aria-label="Go to Home section" aria-current="page">
+          <span class="nav-icon-wrap">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </span>
+          <span class="nav-label">Home</span>
+        </a>
+        <span class="sidebar-tooltip" aria-hidden="true">Home</span>
+      </li>
+
+      <!-- About Me -->
+      <li class="sidebar-nav-item">
+        <a href="#about" class="sidebar-nav-link" aria-label="Go to About Me section">
+          <span class="nav-icon-wrap">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </span>
+          <span class="nav-label">About Me</span>
+        </a>
+        <span class="sidebar-tooltip" aria-hidden="true">About Me</span>
+      </li>
+
+      <!-- Skills -->
+      <li class="sidebar-nav-item">
+        <a href="#skills" class="sidebar-nav-link" aria-label="Go to Skills section">
+          <span class="nav-icon-wrap">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </span>
+          <span class="nav-label">Skills</span>
+        </a>
+        <span class="sidebar-tooltip" aria-hidden="true">Skills</span>
+      </li>
+
+      <!-- Timeline -->
+      <li class="sidebar-nav-item">
+        <a href="#timeline" class="sidebar-nav-link" aria-label="Go to Timeline section">
+          <span class="nav-icon-wrap">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </span>
+          <span class="nav-label">Timeline</span>
+        </a>
+        <span class="sidebar-tooltip" aria-hidden="true">Timeline</span>
+      </li>
+
+      <!-- Projects -->
+      <li class="sidebar-nav-item">
+        <a href="#projects" class="sidebar-nav-link" aria-label="Go to Projects section">
+          <span class="nav-icon-wrap">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+            </svg>
+          </span>
+          <span class="nav-label">Projects</span>
+          <span class="nav-badge">3</span>
+        </a>
+        <span class="sidebar-tooltip" aria-hidden="true">Projects</span>
+      </li>
+
+      <!-- Divider -->
+      <li role="separator" aria-hidden="true"><div class="sidebar-divider"></div></li>
+
+      <!-- Testimonials -->
+      <li class="sidebar-nav-item">
+        <a href="#testimonials" class="sidebar-nav-link" aria-label="Go to Testimonials section">
+          <span class="nav-icon-wrap">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+          </span>
+          <span class="nav-label">Testimonials</span>
+        </a>
+        <span class="sidebar-tooltip" aria-hidden="true">Testimonials</span>
+      </li>
+
+      <!-- Chat -->
+      <li class="sidebar-nav-item">
+        <a href="#chat" class="sidebar-nav-link" aria-label="Go to Chat section">
+          <span class="nav-icon-wrap">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+            </svg>
+          </span>
+          <span class="nav-label">Chat</span>
+          <span class="nav-badge" style="background:#10b981;">&#9632;</span>
+        </a>
+        <span class="sidebar-tooltip" aria-hidden="true">Chat</span>
+      </li>
+
+      <!-- Contact -->
+      <li class="sidebar-nav-item">
+        <a href="#contact" class="sidebar-nav-link" aria-label="Go to Contact section">
+          <span class="nav-icon-wrap">
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </span>
+          <span class="nav-label">Contact</span>
+        </a>
+        <span class="sidebar-tooltip" aria-hidden="true">Contact</span>
+      </li>
+
+    </ul>
+    <!-- END Navigation Links -->
+
+    <!-- Sidebar Footer: pixel status indicator -->
+    <div class="sidebar-footer">
+      <span class="sidebar-dot" aria-hidden="true"></span>
+      <span class="sidebar-pixel-counter">&nbsp;ONLINE &bull; AVAILABLE</span>
+    </div>
+  </nav>
+  <!-- END PIXEL ART VERTICAL SIDEBAR NAVIGATION -->
+
+  <!-- ====================================================================== -->
+  <!-- HEADER & NAVIGATION AREA                                              -->
+  <!-- ====================================================================== -->
+  <header class="site-header" id="header" role="banner">
+    <div class="container header-container">
+      
+      <!-- Developer Brand / Logo -->
+      <a href="#hero" class="brand-logo" aria-label="Portfolio Home">
+        <span class="logo-bracket">&lt;</span><span class="logo-text">Dev</span><span class="logo-accent">.Portfolio</span><span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <!-- Primary Navigation Links -->
+      <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
+        <ul class="nav-list" role="list">
+          <li><a href="#hero" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#timeline" class="nav-link">Timeline</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Items: Theme Toggle & Options -->
+      <div class="header-actions">
+
+        <!-- ================================================================ -->
+        <!-- PLACEHOLDER: NIGHT / DARK MODE TOGGLE                           -->
+        <!-- ================================================================ -->
+        <!--
+          Night Mode Toggle Placeholder:
+          - Accessible button element with ARIA state attributes.
+          - Toggles light and dark themes via CSS custom properties.
+          - Contains inline SVGs for Sun (light mode) and Moon (dark mode).
+        -->
+        <button 
+          id="theme-toggle" 
+          class="theme-toggle-btn" 
+          type="button" 
+          aria-label="Toggle night / dark mode" 
+          aria-pressed="true" 
+          title="Toggle color theme">
+          <!-- Sun Icon (Shown in Dark Mode) -->
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m12.72-12.72l1.42-1.42" />
+          </svg>
+          <!-- Moon Icon (Shown in Light Mode) -->
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+          <span class="sr-only">Toggle Theme</span>
+        </button>
+        <!-- END PLACEHOLDER: NIGHT MODE TOGGLE -->
+
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ====================================================================== -->
+  <!-- MAIN CONTENT AREA                                                      -->
+  <!-- ====================================================================== -->
+  <main id="main-content" role="main">
+
+    <!-- ==================================================================== -->
+    <!-- SECTION: HERO                                                       -->
+    <!-- ==================================================================== -->
+    <!--
+      Hero Section Placeholder:
+      - Introduction headline and current engineering title
+      - Elevator pitch / core specialization
+      - Primary and secondary Call to Action (CTA) buttons
+      - Social profile links or avatar placeholder
+    -->
+    <section id="hero" class="hero-section" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-pulse-dot" aria-hidden="true"></span>
+            <span>Available for New Roles &amp; Projects</span>
+          </div>
+
+          <h1 id="hero-title" class="hero-title">
+            Hi, I'm <span class="logo-accent">Alex Rivers</span>.<br>
+            Software Engineer &amp; Architect.
+          </h1>
+
+          <p class="hero-tagline">
+            I craft high-performance distributed systems, intuitive user interfaces, and scalable backend services with clean code and modern engineering practices.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">Explore Featured Projects &rarr;</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END SECTION: HERO -->
+
+
+    <!-- ==================================================================== -->
+    <!-- SECTION: ABOUT                                                      -->
+    <!-- ==================================================================== -->
+    <!--
+      About Section Placeholder:
+      - Professional summary, background journey, and philosophy
+      - Key metrics (e.g. Years of Experience, Projects Completed)
+      - Links to Resume / CV or credentials
+    -->
+    <section id="about" class="about-section" aria-labelledby="about-title">
+      <div class="container">
+        
+        <header class="section-header">
+          <span class="section-subtitle">Biography &amp; Background</span>
+          <h2 id="about-title" class="section-title">About Me</h2>
+          <div class="section-divider"></div>
+        </header>
+
+        <div class="about-grid">
+          <article class="about-text">
+            <p>
+              I am a software engineer with over 5 years of experience designing robust web services and intuitive client applications. I thrive at the intersection of performant backend algorithms and user-centric frontend experiences.
+            </p>
+            <p>
+              My focus centers on maintainability, modular architectures, and test-driven development. When not writing code, I contribute to open-source software, mentor aspiring developers, and write technical deep-dives on system performance.
+            </p>
+            <a href="#contact" class="btn btn-secondary">Download Resume / CV</a>
+          </article>
+
+          <!-- Quick Highlight Metrics -->
+          <aside class="card stats-card" aria-label="Key statistics">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Projects Shipped</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">99.9%</span>
+                <span class="stat-label">Uptime Architecture</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">12k+</span>
+                <span class="stat-label">Lines of Open Source</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+    <!-- END SECTION: ABOUT -->
+
+
+    <!-- ==================================================================== -->
+    <!-- SECTION: SKILLS                                                     -->
+    <!-- ==================================================================== -->
+    <!--
+      Skills Section Placeholder:
+      - Categorized technical stack (Languages, Frontend, Backend, Tools & Cloud)
+      - Semantic list tags (ul, li) for accessibility
+    -->
+    <section id="skills" class="skills-section" aria-labelledby="skills-title">
+      <div class="container">
+
+        <header class="section-header">
+          <span class="section-subtitle">Technical Stack</span>
+          <h2 id="skills-title" class="section-title">Skills &amp; Technologies</h2>
+          <div class="section-divider"></div>
+        </header>
+
+        <div class="skills-grid">
+          
+          <!-- Category: Languages -->
+          <article class="card skill-card">
+            <h3>Programming Languages</h3>
+            <ul class="skills-list" role="list">
+              <li class="skill-tag">TypeScript</li>
+              <li class="skill-tag">JavaScript (ES6+)</li>
+              <li class="skill-tag">Python</li>
+              <li class="skill-tag">Go (Golang)</li>
+              <li class="skill-tag">SQL</li>
+            </ul>
+          </article>
+
+          <!-- Category: Frontend -->
+          <article class="card skill-card">
+            <h3>Frontend Development</h3>
+            <ul class="skills-list" role="list">
+              <li class="skill-tag">React</li>
+              <li class="skill-tag">Next.js</li>
+              <li class="skill-tag">HTML5 / Semantic Web</li>
+              <li class="skill-tag">CSS3 / PostCSS</li>
+              <li class="skill-tag">Web Accessibility (a11y)</li>
+            </ul>
+          </article>
+
+          <!-- Category: Backend & Architecture -->
+          <article class="card skill-card">
+            <h3>Backend &amp; Services</h3>
+            <ul class="skills-list" role="list">
+              <li class="skill-tag">Node.js</li>
+              <li class="skill-tag">Express / FastAPI</li>
+              <li class="skill-tag">PostgreSQL</li>
+              <li class="skill-tag">Redis</li>
+              <li class="skill-tag">GraphQL &amp; REST APIs</li>
+            </ul>
+          </article>
+
+          <!-- Category: Cloud & DevOps -->
+          <article class="card skill-card">
+            <h3>Cloud &amp; Tooling</h3>
+            <ul class="skills-list" role="list">
+              <li class="skill-tag">Docker</li>
+              <li class="skill-tag">Kubernetes</li>
+              <li class="skill-tag">AWS (S3, Lambda, EC2)</li>
+              <li class="skill-tag">CI/CD (GitHub Actions)</li>
+              <li class="skill-tag">Git Version Control</li>
+            </ul>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- END SECTION: SKILLS -->
+
+
+    <!-- ==================================================================== -->
+    <!-- SECTION: TIMELINE                                                   -->
+    <!-- ==================================================================== -->
+    <!--
+      Timeline Section Placeholder:
+      - Chronological career progression or education history
+      - Uses semantic time elements for dates
+      - Roles, companies, and brief highlights
+    -->
+    <section id="timeline" class="timeline-section" aria-labelledby="timeline-title">
+      <div class="container">
+
+        <header class="section-header">
+          <span class="section-subtitle">Experience &amp; History</span>
+          <h2 id="timeline-title" class="section-title">Career Timeline</h2>
+          <div class="section-divider"></div>
+        </header>
+
+        <div class="timeline-container">
+          
+          <!-- Timeline Entry 1 -->
+          <article class="timeline-item">
+            <time datetime="2023" class="timeline-date">2023 &mdash; Present</time>
+            <h3 class="timeline-role">Senior Full-Stack Engineer</h3>
+            <div class="timeline-company">Nexus Cloud Solutions &bull; Remote</div>
+            <p class="timeline-desc">
+              Spearheaded the redesign of microservice APIs servicing 4M+ daily active users. Reduced latency by 35% using caching and query optimization.
+            </p>
+          </article>
+
+          <!-- Timeline Entry 2 -->
+          <article class="timeline-item">
+            <time datetime="2021" class="timeline-date">2021 &mdash; 2023</time>
+            <h3 class="timeline-role">Software Engineer</h3>
+            <div class="timeline-company">Aura Labs &bull; San Francisco, CA</div>
+            <p class="timeline-desc">
+              Constructed collaborative real-time web applications with WebSockets, React, and Redis. Mentored junior teammates and instituted automated testing.
+            </p>
+          </article>
+
+          <!-- Timeline Entry 3 -->
+          <article class="timeline-item">
+            <time datetime="2019" class="timeline-date">2019 &mdash; 2021</time>
+            <h3 class="timeline-role">Associate Software Engineer</h3>
+            <div class="timeline-company">DataPulse Inc. &bull; Austin, TX</div>
+            <p class="timeline-desc">
+              Engineered responsive frontend interfaces and REST endpoints for data visualization dashboards.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- END SECTION: TIMELINE -->
+
+
+    <!-- ==================================================================== -->
+    <!-- SECTION: PROJECTS                                                   -->
+    <!-- ==================================================================== -->
+    <!--
+      Projects Section Placeholder:
+      - Showcase of software engineering projects
+      - Project card with preview, description, tech stack tags, demo and repo links
+    -->
+    <section id="projects" class="projects-section" aria-labelledby="projects-title">
+      <div class="container">
+
+        <header class="section-header">
+          <span class="section-subtitle">Portfolio Work</span>
+          <h2 id="projects-title" class="section-title">Featured Projects</h2>
+          <div class="section-divider"></div>
+        </header>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1 -->
+          <article class="card project-card">
+            <div>
+              <div class="project-preview">
+                <span>[Project Preview: Cloud Architecture]</span>
+              </div>
+              <h3 class="project-title">CloudPulse Observability Engine</h3>
+              <p class="project-desc">
+                An open-source distributed tracing and log analytics dashboard with sub-second querying across high-cardinality telemetry metrics.
+              </p>
+            </div>
+            <div>
+              <div class="project-tags">
+                <span class="skill-tag">Go</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">ClickHouse</span>
+                <span class="skill-tag">Docker</span>
+              </div>
+              <div class="project-links">
+                <a href="#projects" class="project-link" aria-label="View CloudPulse Live Demo">Live Demo &rarr;</a>
+                <a href="#projects" class="project-link" aria-label="View CloudPulse Source on GitHub">GitHub Repo &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="card project-card">
+            <div>
+              <div class="project-preview">
+                <span>[Project Preview: Realtime Collaboration]</span>
+              </div>
+              <h3 class="project-title">SyncScript Collaborative Canvas</h3>
+              <p class="project-desc">
+                Real-time multi-user document editor implementing Conflict-Free Replicated Data Types (CRDTs) with instant conflict resolution.
+              </p>
+            </div>
+            <div>
+              <div class="project-tags">
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">WebSockets</span>
+                <span class="skill-tag">Redis</span>
+              </div>
+              <div class="project-links">
+                <a href="#projects" class="project-link" aria-label="View SyncScript Live Demo">Live Demo &rarr;</a>
+                <a href="#projects" class="project-link" aria-label="View SyncScript Source on GitHub">GitHub Repo &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="card project-card">
+            <div>
+              <div class="project-preview">
+                <span>[Project Preview: Developer CLI Tool]</span>
+              </div>
+              <h3 class="project-title">DevForge CLI Automator</h3>
+              <p class="project-desc">
+                Command-line utility for scaffolding microservices, generating OpenAPI specifications, and managing localized test containers.
+              </p>
+            </div>
+            <div>
+              <div class="project-tags">
+                <span class="skill-tag">Rust</span>
+                <span class="skill-tag">Docker API</span>
+                <span class="skill-tag">GraphQL</span>
+              </div>
+              <div class="project-links">
+                <a href="#projects" class="project-link" aria-label="View DevForge Documentation">Documentation &rarr;</a>
+                <a href="#projects" class="project-link" aria-label="View DevForge Source on GitHub">GitHub Repo &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- END SECTION: PROJECTS -->
+
+
+    <!-- ==================================================================== -->
+    <!-- SECTION: CONTACT                                                    -->
+    <!-- ==================================================================== -->
+    <!--
+      Contact Section Placeholder:
+      - Direct contact methods (Email, Location, GitHub, LinkedIn)
+      - Accessible contact form with semantic input and label controls
+    -->
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <div class="container">
+
+        <header class="section-header">
+          <span class="section-subtitle">Reach Out</span>
+          <h2 id="contact-title" class="section-title">Get In Touch</h2>
+          <div class="section-divider"></div>
+        </header>
+
+        <div class="contact-grid">
+          
+          <div class="contact-info">
+            <h3>Let's collaborate</h3>
+            <p>
+              I am open to discuss engineering roles, architectural consulting, or open-source initiatives. Send me an email or connect through the form!
+            </p>
+            <div class="contact-detail-item">
+              <strong>Email:</strong> <span>alex.engineer@example.com</span>
+            </div>
+            <div class="contact-detail-item">
+              <strong>Location:</strong> <span>San Francisco, California</span>
+            </div>
+            <div class="contact-detail-item">
+              <strong>GitHub:</strong> <span>github.com/alex-dev</span>
+            </div>
+          </div>
+
+          <!-- Semantic Contact Form -->
+          <form class="card contact-form" action="#" method="POST" id="contact-form">
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Full Name</label>
+              <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Jane Doe" required autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email" class="form-label">Email Address</label>
+              <input type="email" id="contact-email" name="email" class="form-input" placeholder="e.g. jane@company.com" required autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Project Details / Message</label>
+              <textarea id="contact-message" name="message" class="form-textarea" rows="4" placeholder="How can I help you build?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Message &rarr;</button>
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- END SECTION: CONTACT -->
+
+  </main>
+
+
+  <!-- ====================================================================== -->
+  <!-- FOOTER                                                                 -->
+  <!-- ====================================================================== -->
+  <!--
+    Footer Placeholder:
+    - Copyright information
+    - Quick navigation links
+    - Back-to-top shortcut
+  -->
+  <footer id="footer" class="site-footer" role="contentinfo">
+    <div class="container footer-content">
+      
+      <div>
+        <p>&copy; <time id="current-year">2026</time> Alex Rivers. Built with semantic HTML5 &amp; modern CSS.</p>
+      </div>
+
+      <ul class="footer-links" role="list">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div>
+        <a href="#header" class="back-to-top" aria-label="Back to top">Back to top &uarr;</a>
+      </div>
+
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+
+  <!-- ====================================================================== -->
+  <!-- JAVASCRIPT: NIGHT / DARK MODE TOGGLE FUNCTIONALITY                     -->
+  <!-- ====================================================================== -->
+  <script>
+    // ================================================================
+    // THEME SWITCHER — night / day mode toggle
+    // ================================================================
+    (function() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const rootHtml = document.documentElement;
+
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+      applyTheme(initialTheme);
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const currentTheme = rootHtml.getAttribute('data-theme') || 'dark';
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          applyTheme(newTheme);
+          localStorage.setItem('portfolio-theme', newTheme);
+        });
+      }
+
+      function applyTheme(theme) {
+        rootHtml.setAttribute('data-theme', theme);
+        if (toggleBtn) {
+          toggleBtn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+          toggleBtn.setAttribute('title', `Switch to ${theme === 'dark' ? 'light' : 'night'} mode`);
+        }
+      }
+    })();
+
+    // ================================================================
+    // PIXEL ART VERTICAL SIDEBAR — expand / collapse & scrollspy
+    // ================================================================
+    (function () {
+      const sidebar      = document.getElementById('pixel-sidebar');
+      const toggleBtn    = document.getElementById('sidebar-toggle');
+      const overlay      = document.getElementById('sidebar-overlay');
+      const mobileBtn    = document.getElementById('mobile-nav-btn');
+      const body         = document.body;
+      const STORAGE_KEY  = 'sidebar-expanded';
+
+      // --- Desktop expand / collapse ---
+      let isExpanded = localStorage.getItem(STORAGE_KEY) === 'true';
+
+      function setDesktopState(expanded) {
+        isExpanded = expanded;
+        if (expanded) {
+          sidebar.classList.add('expanded');
+          body.classList.add('sidebar-expanded');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          toggleBtn.setAttribute('aria-label', 'Collapse navigation sidebar');
+          toggleBtn.title = 'Collapse sidebar';
+        } else {
+          sidebar.classList.remove('expanded');
+          body.classList.remove('sidebar-expanded');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          toggleBtn.setAttribute('aria-label', 'Expand navigation sidebar');
+          toggleBtn.title = 'Expand sidebar';
+        }
+        localStorage.setItem(STORAGE_KEY, String(expanded));
+      }
+
+      // Restore saved preference (desktop)
+      if (window.innerWidth > 768) {
+        setDesktopState(isExpanded);
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          setDesktopState(!isExpanded);
+        });
+      }
+
+      // --- Mobile open / close ---
+      function openMobile() {
+        sidebar.classList.add('mobile-open');
+        overlay.classList.add('visible');
+        overlay.removeAttribute('aria-hidden');
+        mobileBtn.setAttribute('aria-expanded', 'true');
+        // Trap focus within sidebar on mobile
+        sidebar.querySelector('.sidebar-nav-link').focus();
+      }
+
+      function closeMobile() {
+        sidebar.classList.remove('mobile-open');
+        overlay.classList.remove('visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+        mobileBtn.focus();
+      }
+
+      if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+          sidebar.classList.contains('mobile-open') ? closeMobile() : openMobile();
+        });
+      }
+
+      if (overlay) {
+        overlay.addEventListener('click', closeMobile);
+      }
+
+      // Close mobile sidebar when a link is clicked
+      sidebar.querySelectorAll('.sidebar-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) closeMobile();
+        });
+      });
+
+      // Escape key closes sidebar
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && sidebar.classList.contains('mobile-open')) {
+          closeMobile();
+        }
+      });
+
+      // --- Scrollspy: highlight active nav link ---
+      const sections = [
+        { id: 'hero',         link: 'a[href="#hero"]' },
+        { id: 'about',        link: 'a[href="#about"]' },
+        { id: 'skills',       link: 'a[href="#skills"]' },
+        { id: 'timeline',     link: 'a[href="#timeline"]' },
+        { id: 'projects',     link: 'a[href="#projects"]' },
+        { id: 'testimonials', link: 'a[href="#testimonials"]' },
+        { id: 'chat',         link: 'a[href="#chat"]' },
+        { id: 'contact',      link: 'a[href="#contact"]' },
+      ];
+
+      const navLinks = sidebar.querySelectorAll('.sidebar-nav-link');
+
+      function setActive(href) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          link.removeAttribute('aria-current');
+        });
+        const active = sidebar.querySelector(`a[href="${href}"]`);
+        if (active) {
+          active.classList.add('active');
+          active.setAttribute('aria-current', 'page');
+        }
+      }
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              setActive('#' + entry.target.id);
+            }
+          });
+        },
+        { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+      );
+
+      sections.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+
+      // Remove collapsed state on window resize > 768
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          closeMobile();
+          setDesktopState(isExpanded);
+        } else {
+          body.classList.remove('sidebar-expanded');
+          sidebar.classList.remove('expanded');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
